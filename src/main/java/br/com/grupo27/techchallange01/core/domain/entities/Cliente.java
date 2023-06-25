@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import br.com.grupo27.techchallange01.core.domain.valuesObjects.CPF;
+import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
 @Entity
 public class Cliente {
@@ -14,7 +14,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private CPF cpf;  // CPF é um objeto de valor validando o formato do CPF
+    private ValidadorCPF cpf;  // CPF é um objeto de valor validando o formato do CPF
     private String nome;
     private String email; // Email é um objeto de valor validando o formato do email
 
@@ -22,7 +22,7 @@ public class Cliente {
         // para uso do JPA
     }
 
-    public Cliente(CPF cpf, String nome, String email) {
+    public Cliente(ValidadorCPF cpf, String nome, String email) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -34,7 +34,7 @@ public class Cliente {
         return id;
     }
 
-    public CPF getCpf() {
+    public ValidadorCPF getCpf() {
         return cpf;
     }
 

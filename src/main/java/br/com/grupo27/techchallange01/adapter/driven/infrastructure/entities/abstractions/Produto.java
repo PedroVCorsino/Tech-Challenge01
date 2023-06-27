@@ -1,4 +1,4 @@
-package br.com.grupo27.techchallange01.core.domain.entities.abstractions;
+package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;

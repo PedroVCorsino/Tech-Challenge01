@@ -6,6 +6,10 @@ public class ValidadorCPF {
 
   private String valor;
 
+  private ValidadorCPF() {
+    this.valor = "11111111111";
+  }
+
   public ValidadorCPF(String valor) {
     if (valor == null || !valor.matches("\\d{11}") || !validarDigitosVerificadores(valor)) {
       throw new IllegalArgumentException("CPF inválido");

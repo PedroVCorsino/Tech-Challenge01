@@ -1,4 +1,4 @@
-package br.com.grupo27.techchallange01.core.domain.entities;
+package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import br.com.grupo27.techchallange01.core.domain.Enums.StatusPedido;
-import br.com.grupo27.techchallange01.core.domain.entities.abstractions.ItemPedido;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ItemPedido;
+import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
 
 @Entity
 @Table(name = "PEDIDO")
@@ -22,7 +22,7 @@ public class Pedido {
     private Long id;
     
     @OneToOne
-    private Cliente cliente;
+    private ClienteEntity cliente;
     
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemPedido> itens;
@@ -37,11 +37,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public Cliente getCliente() {
+    public ClienteEntity getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
 

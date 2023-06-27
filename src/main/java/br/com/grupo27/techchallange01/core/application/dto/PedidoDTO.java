@@ -1,7 +1,7 @@
 package br.com.grupo27.techchallange01.core.application.dto;
 
-import br.com.grupo27.techchallange01.core.domain.Enums.StatusPedido;
-import br.com.grupo27.techchallange01.core.domain.entities.abstractions.ItemPedido;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ItemPedido;
+import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
 
 import java.util.List;
 

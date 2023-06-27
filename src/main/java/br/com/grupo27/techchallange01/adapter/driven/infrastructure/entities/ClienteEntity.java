@@ -1,6 +1,7 @@
-package br.com.grupo27.techchallange01.core.domain.entities;
+package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
-import jakarta.persistence.Column;
+import br.com.grupo27.techchallange01.core.domain.Cliente;
+import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,11 +9,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
-
 @Entity
 @Table(name = "CLIENTE")
-public class Cliente {
+public class ClienteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,11 +23,11 @@ public class Cliente {
     private String nome;
     private String email; // Email é um objeto de valor validando o formato do email
 
-    protected Cliente() {
+    protected ClienteEntity() {
         // para uso do JPA
     }
 
-    public Cliente(ValidadorCPF cpf, String nome, String email) {
+    public ClienteEntity(ValidadorCPF cpf, String nome, String email) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -52,9 +51,21 @@ public class Cliente {
         return email;
     }
 
-    // métodos de domínio
-    // ...
+    // setters
 
-    // equals, hashCode, toString
-    // ...
+    public void setCpf(ValidadorCPF cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Cliente toCliente() {
+        return new Cliente(id, cpf, nome, email);
+    }
 }

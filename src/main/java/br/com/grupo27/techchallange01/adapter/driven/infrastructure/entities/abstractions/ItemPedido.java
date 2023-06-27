@@ -1,8 +1,8 @@
-package br.com.grupo27.techchallange01.core.domain.entities.abstractions;
+package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions;
 
 import java.math.BigDecimal;
 
-import br.com.grupo27.techchallange01.core.domain.entities.Pedido;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.Pedido;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;

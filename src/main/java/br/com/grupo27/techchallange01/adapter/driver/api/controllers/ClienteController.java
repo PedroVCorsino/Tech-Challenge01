@@ -1,7 +1,7 @@
 package br.com.grupo27.techchallange01.adapter.driver.api.controllers;
 
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
-import br.com.grupo27.techchallange01.core.application.services.interfaces.ClienteService;
+import br.com.grupo27.techchallange01.core.domain.ports.services.ClienteService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,26 +17,6 @@ public class ClienteController {
 
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ClienteDTO> getClienteById(@PathVariable Long id) {
-        try {
-            ClienteDTO cliente = clienteService.getClienteById(id);
-            if (cliente != null) {
-                return ResponseEntity.ok(cliente);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @GetMapping
-    public ResponseEntity<List<ClienteDTO>> getAllClientes() {
-        List<ClienteDTO> clientes = clienteService.getAllClientes();
-        return ResponseEntity.ok(clientes);
     }
 
     @PostMapping
@@ -59,6 +39,20 @@ public class ClienteController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ClienteDTO> getClienteById(@PathVariable Long id) {
+        try {
+            ClienteDTO cliente = clienteService.getClienteById(id);
+            if (cliente != null) {
+                return ResponseEntity.ok(cliente);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCliente(@PathVariable Long id) {
         try {
@@ -71,5 +65,11 @@ public class ClienteController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ClienteDTO>> getAllClientes() {
+        List<ClienteDTO> clientes = clienteService.getAllClientes();
+        return ResponseEntity.ok(clientes);
     }
 }

@@ -1,4 +1,4 @@
-package br.com.grupo27.techchallange01.core.domain.ports.services;
+package br.com.grupo27.techchallange01.core.domain.ports.service;
 
 import java.util.List;
 

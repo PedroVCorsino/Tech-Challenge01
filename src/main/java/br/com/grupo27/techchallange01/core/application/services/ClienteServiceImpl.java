@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
 import br.com.grupo27.techchallange01.core.domain.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
-import br.com.grupo27.techchallange01.core.domain.ports.services.ClienteService;
+import br.com.grupo27.techchallange01.core.domain.ports.service.ClienteService;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {

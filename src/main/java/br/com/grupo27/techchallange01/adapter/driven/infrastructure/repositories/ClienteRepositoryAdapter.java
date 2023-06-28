@@ -2,7 +2,7 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositorie
 
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.ClienteEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.ClienteRepository;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.ClienteRepositoryJPA;
 import br.com.grupo27.techchallange01.core.domain.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
 
@@ -14,39 +14,39 @@ import java.util.stream.Collectors;
 @Component
 public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
-    private final ClienteRepository clienteRepository;
+    private final ClienteRepositoryJPA ClienteJPA;
 
-    public ClienteRepositoryAdapter(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
+    public ClienteRepositoryAdapter(ClienteRepositoryJPA ClienteJPA) {
+        this.ClienteJPA = ClienteJPA;
     }
 
     @Override
     public Cliente saveCliente(Cliente cliente) {
         ClienteEntity clienteEntity = new ClienteEntity(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-        clienteEntity = clienteRepository.save(clienteEntity);
+        clienteEntity = ClienteJPA.save(clienteEntity);
         return clienteEntity.toCliente();
     }
 
     @Override
     public Cliente updateCliente(Long id, Cliente cliente) {
-        return clienteRepository.findById(id).map(clienteEntity -> {
+        return ClienteJPA.findById(id).map(clienteEntity -> {
             clienteEntity.setCpf(cliente.getCpf());
             clienteEntity.setNome(cliente.getNome());
             clienteEntity.setEmail(cliente.getEmail());
-            clienteEntity = clienteRepository.save(clienteEntity);
+            clienteEntity = ClienteJPA.save(clienteEntity);
             return clienteEntity.toCliente();
         }).orElse(null);
     }
 
     @Override
     public Cliente findById(Long id) {
-        return clienteRepository.findById(id).map(ClienteEntity::toCliente).orElse(null);
+        return ClienteJPA.findById(id).map(ClienteEntity::toCliente).orElse(null);
     }
 
     @Override
     public boolean deleteCliente(Long id) {
-        if(clienteRepository.existsById(id)) {
-            clienteRepository.deleteById(id);
+        if(ClienteJPA.existsById(id)) {
+            ClienteJPA.deleteById(id);
             return true;
         } else {
             return false;
@@ -55,7 +55,7 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
     @Override
     public List<Cliente> listAllClientes() {
-        return clienteRepository.findAll().stream()
+        return ClienteJPA.findAll().stream()
                 .map(ClienteEntity::toCliente)
                 .collect(Collectors.toList());
     }

@@ -1,7 +1,7 @@
 package br.com.grupo27.techchallange01.adapter.driver.api.controllers;
 
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
-import br.com.grupo27.techchallange01.core.domain.ports.services.ClienteService;
+import br.com.grupo27.techchallange01.core.domain.ports.service.ClienteService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

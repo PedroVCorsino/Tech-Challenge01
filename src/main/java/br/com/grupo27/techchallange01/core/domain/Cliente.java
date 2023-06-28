@@ -24,8 +24,6 @@ public class Cliente {
         this.email = clienteDTO.email();
     }
 
-    // getters e setters
-
     public Long getId() {
         return id;
     }
@@ -58,13 +56,7 @@ public class Cliente {
         this.email = email;
     }
 
-    // métodos de domínio
-    // ...
-
     public ClienteDTO toDTO() {
         return new ClienteDTO(this.id, this.cpf, this.nome, this.email);
     }
-
-    // equals, hashCode, toString
-    // ...
 }

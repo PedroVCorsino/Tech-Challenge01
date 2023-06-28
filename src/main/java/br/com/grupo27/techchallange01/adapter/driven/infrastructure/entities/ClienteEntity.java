@@ -18,13 +18,13 @@ public class ClienteEntity {
     private Long id;
     
     @Embedded
-    private ValidadorCPF cpf;  // CPF é um objeto de valor validando o formato do CPF
+    private ValidadorCPF cpf;  // *CPF é um objeto de valor validando o formato do CPF
 
     private String nome;
-    private String email; // Email é um objeto de valor validando o formato do email
+    private String email; // TODO Email é um objeto de valor validando o formato do email
 
     protected ClienteEntity() {
-        // para uso do JPA
+        
     }
 
     public ClienteEntity(ValidadorCPF cpf, String nome, String email) {
@@ -32,8 +32,6 @@ public class ClienteEntity {
         this.nome = nome;
         this.email = email;
     }
-
-    // getters
 
     public Long getId() {
         return id;
@@ -50,8 +48,6 @@ public class ClienteEntity {
     public String getEmail() {
         return email;
     }
-
-    // setters
 
     public void setCpf(ValidadorCPF cpf) {
         this.cpf = cpf;

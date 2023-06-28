@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Table(name = "PRODUTO")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TIPO_PRODUTO")
-public abstract class Produto {
+public abstract class ProdutoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

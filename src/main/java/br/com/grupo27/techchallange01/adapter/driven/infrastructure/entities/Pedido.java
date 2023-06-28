@@ -1,68 +1,68 @@
-package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
+// package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
-import java.util.List;
+// import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ItemPedido;
-import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
+// import jakarta.persistence.CascadeType;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.OneToMany;
+// import jakarta.persistence.OneToOne;
+// import jakarta.persistence.Table;
+// import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ItemPedido;
+// import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
 
-@Entity
-@Table(name = "PEDIDO")
-public class Pedido {
+// @Entity
+// @Table(name = "PEDIDO")
+// public class Pedido {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
     
-    @OneToOne
-    private ClienteEntity cliente;
+//     @OneToOne
+//     private ClienteEntity cliente;
     
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemPedido> itens;
+//     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+//     private List<ItemPedido> itens;
     
-    private StatusPedido status;
+//     private StatusPedido status;
 
-    public Long getId() {
-        return id;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
 
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
+//     public ClienteEntity getCliente() {
+//         return cliente;
+//     }
 
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
+//     public void setCliente(ClienteEntity cliente) {
+//         this.cliente = cliente;
+//     }
 
-    public List<ItemPedido> getItens() {
-        return itens;
-    }
+//     public List<ItemPedido> getItens() {
+//         return itens;
+//     }
 
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
-    }
+//     public void setItens(List<ItemPedido> itens) {
+//         this.itens = itens;
+//     }
 
-    public StatusPedido getStatus() {
-        return status;
-    }
+//     public StatusPedido getStatus() {
+//         return status;
+//     }
 
-    public void setStatus(StatusPedido status) {
-        this.status = status;
-    }
+//     public void setStatus(StatusPedido status) {
+//         this.status = status;
+//     }
 
     
 
-    // Métodos de domínio, como alterar o status do pedido
-}
+//     // Métodos de domínio, como alterar o status do pedido
+// }
 

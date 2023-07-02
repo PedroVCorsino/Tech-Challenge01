@@ -2,8 +2,8 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositorie
 
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.ClienteEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.ClienteRepositoryJPA;
-import br.com.grupo27.techchallange01.core.domain.Cliente;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.ClienteJPA;
+import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
 
 import org.springframework.stereotype.Component;
@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 @Component
 public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
-    private final ClienteRepositoryJPA ClienteJPA;
+    private final ClienteJPA ClienteJPA;
 
-    public ClienteRepositoryAdapter(ClienteRepositoryJPA ClienteJPA) {
+    public ClienteRepositoryAdapter(ClienteJPA ClienteJPA) {
         this.ClienteJPA = ClienteJPA;
     }
 

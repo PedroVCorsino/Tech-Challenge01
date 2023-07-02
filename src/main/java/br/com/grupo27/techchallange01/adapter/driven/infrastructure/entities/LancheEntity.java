@@ -3,7 +3,7 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 import java.math.BigDecimal;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ProdutoEntity;
-import br.com.grupo27.techchallange01.core.domain.Lanche;
+import br.com.grupo27.techchallange01.core.domain.model.Lanche;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 

@@ -1,8 +1,8 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.LancheEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.LancheRepositoryJPA;
-import br.com.grupo27.techchallange01.core.domain.Lanche;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.LancheJPA;
+import br.com.grupo27.techchallange01.core.domain.model.Lanche;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.LancheRepositoryPort;
 
 import org.springframework.stereotype.Component;
@@ -13,21 +13,18 @@ import java.util.stream.Collectors;
 @Component
 public class LancheRepositoryAdapter implements LancheRepositoryPort {
 
-    private final LancheRepositoryJPA lancheRepositoryJPA;
+    private final LancheJPA lancheRepositoryJPA;
 
-    public LancheRepositoryAdapter(LancheRepositoryJPA lancheRepositoryJPA) {
+    public LancheRepositoryAdapter(LancheJPA lancheRepositoryJPA) {
         this.lancheRepositoryJPA = lancheRepositoryJPA;
     }
 
-@Override
-public Lanche saveLanche(Lanche lanche) {
-    LancheEntity lancheEntity = lanche.toEntity();
-    lancheEntity = lancheRepositoryJPA.save(lancheEntity);
-    return lancheEntity.toLanche();
-}
-
-
-
+    @Override
+    public Lanche saveLanche(Lanche lanche) {
+        LancheEntity lancheEntity = lanche.toEntity();
+        lancheEntity = lancheRepositoryJPA.save(lancheEntity);
+        return lancheEntity.toLanche();
+    }
 
     @Override
     public Lanche updateLanche(Long id, Lanche lanche) {

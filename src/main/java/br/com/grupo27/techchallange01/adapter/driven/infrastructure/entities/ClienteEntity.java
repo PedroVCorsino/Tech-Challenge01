@@ -1,6 +1,6 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
-import br.com.grupo27.techchallange01.core.domain.Cliente;
+import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

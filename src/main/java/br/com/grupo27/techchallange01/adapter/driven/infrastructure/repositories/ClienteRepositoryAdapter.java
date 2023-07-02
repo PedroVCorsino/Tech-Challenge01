@@ -22,10 +22,16 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
     @Override
     public Cliente saveCliente(Cliente cliente) {
-        ClienteEntity clienteEntity = new ClienteEntity(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-        clienteEntity = ClienteJPA.save(clienteEntity);
-        return clienteEntity.toCliente();
+        try {
+            ClienteEntity clienteEntity = ClienteJPA.save(cliente.toEntity());
+            return clienteEntity.toCliente();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Lidar com o caso em que a entidade não foi salva corretamente
+            throw new RuntimeException("Falha ao salvar o cliente no banco de dados.");
+        }
     }
+
 
     @Override
     public Cliente updateCliente(Long id, Cliente cliente) {

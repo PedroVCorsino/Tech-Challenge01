@@ -1,5 +1,6 @@
 package br.com.grupo27.techchallange01.core.domain;
 
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.ClienteEntity;
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
 import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
@@ -58,5 +59,9 @@ public class Cliente {
 
     public ClienteDTO toDTO() {
         return new ClienteDTO(this.id, this.cpf, this.nome, this.email);
+    }
+
+    public ClienteEntity toEntity() {
+        return new ClienteEntity(this.cpf, this.nome, this.email);
     }
 }

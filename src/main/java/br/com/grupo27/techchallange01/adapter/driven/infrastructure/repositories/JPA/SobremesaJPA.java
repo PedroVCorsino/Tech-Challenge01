@@ -3,4 +3,4 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositorie
 import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.SobremesaEntity;
 
-public interface SobremesaRepositoryJPA extends JpaRepository<SobremesaEntity, Long> {}
+public interface SobremesaJPA extends JpaRepository<SobremesaEntity, Long> {}

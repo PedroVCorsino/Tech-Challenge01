@@ -3,4 +3,4 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositorie
 import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.BebidaEntity;
 
-public interface BebidaRepositoryJPA extends JpaRepository<BebidaEntity, Long> {}
+public interface BebidaJPA extends JpaRepository<BebidaEntity, Long> {}

@@ -13,7 +13,11 @@ public class LancheEntity extends ProdutoEntity {
 
     protected LancheEntity() {}
 
-    public LancheEntity(String nome, String descricao, BigDecimal preco) {}
+    public LancheEntity(String nome, String descricao, BigDecimal preco) {
+        this.setNome(nome);
+        this.setDescricao(descricao);
+        this.setPreco(preco);
+    }
 
     public Lanche toLanche() {
         return new Lanche(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());

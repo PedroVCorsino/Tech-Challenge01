@@ -19,12 +19,15 @@ public class LancheRepositoryAdapter implements LancheRepositoryPort {
         this.lancheRepositoryJPA = lancheRepositoryJPA;
     }
 
-    @Override
-    public Lanche saveLanche(Lanche lanche) {
-        LancheEntity lancheEntity = new LancheEntity(lanche.getNome(), lanche.getDescricao(), lanche.getPreco());
-        lancheEntity = lancheRepositoryJPA.save(lancheEntity);
-        return lancheEntity.toLanche();
-    }
+@Override
+public Lanche saveLanche(Lanche lanche) {
+    LancheEntity lancheEntity = lanche.toEntity();
+    lancheEntity = lancheRepositoryJPA.save(lancheEntity);
+    return lancheEntity.toLanche();
+}
+
+
+
 
     @Override
     public Lanche updateLanche(Long id, Lanche lanche) {

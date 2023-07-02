@@ -1,4 +1,4 @@
-package br.com.grupo27.techchallange01.core.domain;
+package br.com.grupo27.techchallange01.core.domain.model;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.ClienteEntity;
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;

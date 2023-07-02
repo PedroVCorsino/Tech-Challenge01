@@ -1,9 +1,10 @@
-package br.com.grupo27.techchallange01.core.domain;
+package br.com.grupo27.techchallange01.core.domain.model;
 
 import java.math.BigDecimal;
 
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.SobremesaEntity;
 import br.com.grupo27.techchallange01.core.application.dto.SobremesaDTO;
-import br.com.grupo27.techchallange01.core.domain.abstractions.Produto;
+import br.com.grupo27.techchallange01.core.domain.model.abstractions.Produto;
 public class Sobremesa extends Produto {
     public Sobremesa(Long id, String nome, String descricao, BigDecimal preco) {
         super(id, nome, descricao, preco);
@@ -11,6 +12,10 @@ public class Sobremesa extends Produto {
 
     public SobremesaDTO toDTO() {
         return new SobremesaDTO(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
+    }
+
+        public SobremesaEntity toEntity() {
+        return new SobremesaEntity(this.getNome(), this.getDescricao(), this.getPreco());
     }
  
 }

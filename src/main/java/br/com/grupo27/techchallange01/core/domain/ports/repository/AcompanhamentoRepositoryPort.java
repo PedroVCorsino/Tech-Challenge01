@@ -2,7 +2,7 @@ package br.com.grupo27.techchallange01.core.domain.ports.repository;
 
 import java.util.List;
 
-import br.com.grupo27.techchallange01.core.domain.Acompanhamento;
+import br.com.grupo27.techchallange01.core.domain.model.Acompanhamento;
 
 public interface AcompanhamentoRepositoryPort {
     Acompanhamento saveAcompanhamento(Acompanhamento acompanhamento);

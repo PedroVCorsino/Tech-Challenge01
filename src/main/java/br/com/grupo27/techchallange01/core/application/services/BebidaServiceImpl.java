@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo27.techchallange01.core.application.dto.BebidaDTO;
-import br.com.grupo27.techchallange01.core.domain.Bebida;
+import br.com.grupo27.techchallange01.core.domain.model.Bebida;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.BebidaRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.BebidaService;
 

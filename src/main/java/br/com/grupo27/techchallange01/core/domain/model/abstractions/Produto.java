@@ -1,4 +1,4 @@
-package br.com.grupo27.techchallange01.core.domain.abstractions;
+package br.com.grupo27.techchallange01.core.domain.model.abstractions;
 
 import java.math.BigDecimal;
 

@@ -2,7 +2,7 @@ package br.com.grupo27.techchallange01.core.domain.ports.repository;
 
 import java.util.List;
 
-import br.com.grupo27.techchallange01.core.domain.Sobremesa;
+import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 
 public interface SobremesaRepositoryPort {
     Sobremesa saveSobremesa(Sobremesa sobremesa);

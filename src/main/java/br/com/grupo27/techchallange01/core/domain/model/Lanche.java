@@ -1,10 +1,10 @@
-package br.com.grupo27.techchallange01.core.domain;
+package br.com.grupo27.techchallange01.core.domain.model;
 
 import java.math.BigDecimal;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.LancheEntity;
 import br.com.grupo27.techchallange01.core.application.dto.LancheDTO;
-import br.com.grupo27.techchallange01.core.domain.abstractions.Produto;
+import br.com.grupo27.techchallange01.core.domain.model.abstractions.Produto;
 
 public class Lanche extends Produto {
     public Lanche(Long id, String nome, String descricao, BigDecimal preco) {

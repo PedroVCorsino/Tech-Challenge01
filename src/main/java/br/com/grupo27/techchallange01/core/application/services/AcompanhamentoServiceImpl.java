@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo27.techchallange01.core.application.dto.AcompanhamentoDTO;
-import br.com.grupo27.techchallange01.core.domain.Acompanhamento;
+import br.com.grupo27.techchallange01.core.domain.model.Acompanhamento;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.AcompanhamentoRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.AcompanhamentoService;
 

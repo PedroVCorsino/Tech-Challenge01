@@ -19,6 +19,9 @@ public class AcompanhamentoEntity extends ProdutoEntity {
         this.setPreco(preco);
     }
 
+    public AcompanhamentoEntity(Long id, String nome, String descricao, BigDecimal preco) {
+    }
+
     public Acompanhamento toAcompanhamento() {
         return new Acompanhamento(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }

@@ -13,7 +13,7 @@ public class LancheEntity extends ProdutoEntity {
 
     protected LancheEntity() {}
 
-    public LancheEntity(String nome, String descricao, BigDecimal preco) {
+    public LancheEntity(Long id, String nome, String descricao, BigDecimal preco) {
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setPreco(preco);

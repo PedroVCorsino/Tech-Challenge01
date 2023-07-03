@@ -2,6 +2,11 @@ package br.com.grupo27.techchallange01.core.domain.model;
 
 import java.math.BigDecimal;
 
+import br.com.grupo27.techchallange01.core.application.dto.AcompanhamentoDTO;
+import br.com.grupo27.techchallange01.core.application.dto.BebidaDTO;
+import br.com.grupo27.techchallange01.core.application.dto.LancheDTO;
+import br.com.grupo27.techchallange01.core.application.dto.SobremesaDTO;
+
 public class Combo {
     private Long id;
     private Lanche lanche;
@@ -22,6 +27,18 @@ public class Combo {
         this.quantidade = quantidade;
         this.valorUnitario = calcularValorUnitario();
         this.valorTotal = this.valorUnitario.multiply(BigDecimal.valueOf(quantidade));
+    }
+
+    public Combo(Long id2, LancheDTO lanche2, AcompanhamentoDTO acompanhamento2, BebidaDTO bebida2,
+            SobremesaDTO sobremesa2, Integer quantidade2) {
+    }
+
+    public Combo(Long id2, LancheDTO lanche2, AcompanhamentoDTO acompanhamento2, BebidaDTO bebida2,
+            SobremesaDTO sobremesa2, Integer quantidade2, BigDecimal valorUnitario2, BigDecimal valorTotal2) {
+    }
+
+    public Combo(Long id2, Lanche dtoToDomain, Acompanhamento dtoToDomain2, Bebida dtoToDomain3, Sobremesa dtoToDomain4,
+            Integer quantidade2, BigDecimal valorUnitario2, BigDecimal valorTotal2) {
     }
 
     private BigDecimal calcularValorUnitario() {

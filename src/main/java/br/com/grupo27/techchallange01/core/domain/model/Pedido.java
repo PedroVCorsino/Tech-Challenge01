@@ -12,14 +12,13 @@ public class Pedido {
     private BigDecimal valorTotal;
     private StatusPedido status;
     private boolean pago = false;
-
-    public Pedido(Long id, Long idCliente, List<Combo> combos) {
+    public Pedido(Long id, Long idCliente, List<Combo> combos, BigDecimal valorTotal, StatusPedido status, boolean pago) {
         this.id = id;
         this.idCliente = idCliente;
         this.combos = combos;
-        this.valorTotal = calcularValorTotal();
-        this.status = StatusPedido.PENDENTE; // ainda não foi pago
-        this.pago = false; // Definir o valor inicial desejado para pago
+        this.valorTotal = valorTotal;
+        this.status = status;
+        this.pago = pago;
     }
 
     private BigDecimal calcularValorTotal() {

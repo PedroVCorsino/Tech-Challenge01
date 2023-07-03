@@ -11,6 +11,9 @@ public class Acompanhamento extends Produto {
         super(id, nome, descricao, preco);
     }
 
+    public Acompanhamento(Long id, String nome, BigDecimal preco) {
+    }
+
     public AcompanhamentoDTO toDTO() {
         return new AcompanhamentoDTO(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }

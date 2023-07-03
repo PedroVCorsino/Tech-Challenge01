@@ -10,6 +10,9 @@ public class Bebida extends Produto {
         super(id, nome, descricao, preco);
     }
 
+    public Bebida(Long id, String nome, BigDecimal preco) {
+    }
+
     public BebidaDTO toDTO() {
         return new BebidaDTO(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }

@@ -2,50 +2,54 @@ package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositorie
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.LancheEntity;
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.LancheJPA;
+import br.com.grupo27.techchallange01.config.mappers.produtos.LancheMapper;
 import br.com.grupo27.techchallange01.core.domain.model.Lanche;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.LancheRepositoryPort;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class LancheRepositoryAdapter implements LancheRepositoryPort {
 
-    private final LancheJPA lancheRepositoryJPA;
+    private final LancheJPA lancheJPA;
+    private final LancheMapper lancheMapper;
 
-    public LancheRepositoryAdapter(LancheJPA lancheRepositoryJPA) {
-        this.lancheRepositoryJPA = lancheRepositoryJPA;
+    public LancheRepositoryAdapter(LancheJPA lancheJPA, LancheMapper lancheMapper) {
+        this.lancheJPA = lancheJPA;
+        this.lancheMapper = lancheMapper;
     }
 
     @Override
     public Lanche saveLanche(Lanche lanche) {
-        LancheEntity lancheEntity = lanche.toEntity();
-        lancheEntity = lancheRepositoryJPA.save(lancheEntity);
-        return lancheEntity.toLanche();
+        LancheEntity lancheEntity = lancheMapper.domainToEntity(lanche);
+        lancheEntity = lancheJPA.save(lancheEntity);
+        return lancheMapper.entityToDomain(lancheEntity);
     }
 
     @Override
     public Lanche updateLanche(Long id, Lanche lanche) {
-        return lancheRepositoryJPA.findById(id).map(lancheEntity -> {
-            lancheEntity.setNome(lanche.getNome());
-            lancheEntity.setDescricao(lanche.getDescricao());
-            lancheEntity.setPreco(lanche.getPreco());
-            lancheEntity = lancheRepositoryJPA.save(lancheEntity);
-            return lancheEntity.toLanche();
+        return lancheJPA.findById(id).map(lancheEntity -> {
+            LancheEntity updatedLancheEntity = lancheMapper.domainToEntity(lanche);
+            updatedLancheEntity.setId(lancheEntity.getId());
+            updatedLancheEntity = lancheJPA.save(updatedLancheEntity);
+            return lancheMapper.entityToDomain(updatedLancheEntity);
         }).orElse(null);
     }
 
     @Override
     public Lanche findLancheById(Long id) {
-        return lancheRepositoryJPA.findById(id).map(LancheEntity::toLanche).orElse(null);
+        return lancheJPA.findById(id)
+                .map(lancheMapper::entityToDomain)
+                .orElse(null);
     }
 
     @Override
     public boolean deleteLanche(Long id) {
-        if (lancheRepositoryJPA.existsById(id)) {
-            lancheRepositoryJPA.deleteById(id);
+        if (lancheJPA.existsById(id)) {
+            lancheJPA.deleteById(id);
             return true;
         } else {
             return false;
@@ -54,8 +58,8 @@ public class LancheRepositoryAdapter implements LancheRepositoryPort {
 
     @Override
     public List<Lanche> listAllLanches() {
-        return lancheRepositoryJPA.findAll().stream()
-                .map(LancheEntity::toLanche)
+        return lancheJPA.findAll().stream()
+                .map(lancheMapper::entityToDomain)
                 .collect(Collectors.toList());
     }
 }

@@ -6,12 +6,12 @@ import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories
 import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
     private final ClienteJPA ClienteJPA;

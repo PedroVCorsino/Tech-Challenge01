@@ -19,6 +19,9 @@ public class SobremesaEntity extends ProdutoEntity {
         this.setPreco(preco);
     }
 
+    public SobremesaEntity(Long id, String nome, String descricao, BigDecimal preco) {
+    }
+
     public Sobremesa toSobremesa() {
         return new Sobremesa(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }

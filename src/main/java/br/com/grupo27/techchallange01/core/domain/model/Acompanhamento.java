@@ -19,6 +19,6 @@ public class Acompanhamento extends Produto {
     }
 
     public AcompanhamentoEntity toEntity() {
-        return new AcompanhamentoEntity(this.getNome(), this.getDescricao(), this.getPreco());
+        return new AcompanhamentoEntity(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }
 }

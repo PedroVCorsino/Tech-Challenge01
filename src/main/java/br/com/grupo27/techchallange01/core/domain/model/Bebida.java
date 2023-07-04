@@ -18,7 +18,7 @@ public class Bebida extends Produto {
     }
 
     public BebidaEntity toEntity() {
-        return new BebidaEntity(this.getNome(), this.getDescricao(), this.getPreco());
+        return new BebidaEntity(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }
     
 }

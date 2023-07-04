@@ -15,7 +15,7 @@ public class Sobremesa extends Produto {
     }
 
         public SobremesaEntity toEntity() {
-        return new SobremesaEntity(this.getNome(), this.getDescricao(), this.getPreco());
+        return new SobremesaEntity(this.getId(), this.getNome(), this.getDescricao(), this.getPreco());
     }
  
 }

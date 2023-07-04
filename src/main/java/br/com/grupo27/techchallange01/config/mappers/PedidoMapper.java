@@ -26,6 +26,8 @@ public class PedidoMapper {
                 .map(comboMapper::domainToEntity)
                 .collect(Collectors.toList());
 
+        comboEntities.size();
+
         return new PedidoEntity(
                 pedido.getId(),
                 pedido.getIdCliente(),
@@ -55,6 +57,8 @@ public class PedidoMapper {
         List<Combo> combos = pedidoDTO.combos().stream()
                 .map(comboMapper::dtoToDomain)
                 .collect(Collectors.toList());
+        
+                combos.size();
 
         return new Pedido(
                 pedidoDTO.id(),

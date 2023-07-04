@@ -6,20 +6,19 @@ import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abs
 import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("SOBREMESA")
+@Table(name = "SOBREMESA")
 public class SobremesaEntity extends ProdutoEntity {
 
     protected SobremesaEntity() {}
 
-    public SobremesaEntity(String nome, String descricao, BigDecimal preco) {
+    public SobremesaEntity(Long id, String nome, String descricao, BigDecimal preco) {
+        this.setId(id);
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setPreco(preco);
-    }
-
-    public SobremesaEntity(Long id, String nome, String descricao, BigDecimal preco) {
     }
 
     public Sobremesa toSobremesa() {

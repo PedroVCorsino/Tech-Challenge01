@@ -18,12 +18,16 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "combos")
+@Table(name = "COMBO")
 public class ComboEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private PedidoEntity pedido;
 
     @ManyToOne
     @JoinColumn(name = "lanche_id")
@@ -50,12 +54,8 @@ public class ComboEntity {
     @Column(name = "valor_total", nullable = false)
     private BigDecimal valorTotal;
 
-    public ComboEntity() {
-    }
 
-    public ComboEntity(Long id2, LancheEntity domainToEntity, AcompanhamentoEntity domainToEntity2,
-            BebidaEntity domainToEntity3, SobremesaEntity domainToEntity4, Integer quantidade2,
-            BigDecimal valorUnitario2, BigDecimal valorTotal2) {
+    public ComboEntity() {
     }
 
     public Long getId() {
@@ -114,8 +114,6 @@ public class ComboEntity {
         this.valorUnitario = valorUnitario;
     }
 
-
-
     public BigDecimal getValorTotal() {
         return valorTotal;
     }
@@ -124,15 +122,15 @@ public class ComboEntity {
         this.valorTotal = valorTotal;
     }
 
-    @PrePersist
-    @PreUpdate
-    private void calcularValorUnitarioETotal() {
-        BigDecimal valorLanche = (lanche != null) ? lanche.getPreco() : BigDecimal.ZERO;
-        BigDecimal valorAcompanhamento = (acompanhamento != null) ? acompanhamento.getPreco() : BigDecimal.ZERO;
-        BigDecimal valorBebida = (bebida != null) ? bebida.getPreco() : BigDecimal.ZERO;
-        BigDecimal valorSobremesa = (sobremesa != null) ? sobremesa.getPreco() : BigDecimal.ZERO;
+    // @PrePersist
+    // @PreUpdate
+    // private void calcularValorUnitarioETotal() {
+    //     BigDecimal valorLanche = (lanche != null) ? lanche.getPreco() : BigDecimal.ZERO;
+    //     BigDecimal valorAcompanhamento = (acompanhamento != null) ? acompanhamento.getPreco() : BigDecimal.ZERO;
+    //     BigDecimal valorBebida = (bebida != null) ? bebida.getPreco() : BigDecimal.ZERO;
+    //     BigDecimal valorSobremesa = (sobremesa != null) ? sobremesa.getPreco() : BigDecimal.ZERO;
 
-        valorUnitario = valorLanche.add(valorAcompanhamento).add(valorBebida).add(valorSobremesa);
-        valorTotal = valorUnitario.multiply(BigDecimal.valueOf(quantidade));
-    }
+    //     valorUnitario = valorLanche.add(valorAcompanhamento).add(valorBebida).add(valorSobremesa);
+    //     valorTotal = valorUnitario.multiply(BigDecimal.valueOf(quantidade));
+    // }
 }

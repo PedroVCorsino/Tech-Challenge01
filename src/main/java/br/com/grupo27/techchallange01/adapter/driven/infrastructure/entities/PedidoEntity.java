@@ -36,9 +36,10 @@ public class PedidoEntity {
     @Column(name = "valor_total")
     private BigDecimal valorTotal;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusPedido status;
+
 
     @Column(name = "pago", nullable = false)
     private boolean pago;

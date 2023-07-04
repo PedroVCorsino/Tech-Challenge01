@@ -4,22 +4,20 @@ import java.math.BigDecimal;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.abstractions.ProdutoEntity;
 import br.com.grupo27.techchallange01.core.domain.model.Bebida;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("BEBIDA")
+@Table(name = "BEBIDA")
 public class BebidaEntity extends ProdutoEntity {
 
     protected BebidaEntity() {}
 
-    public BebidaEntity(String nome, String descricao, BigDecimal preco) {
+    public BebidaEntity(Long id, String nome, String descricao, BigDecimal preco) {
+        this.setId(id);
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setPreco(preco);
-    }
-
-    public BebidaEntity(Long id, String nome, String descricao, BigDecimal preco) {
     }
 
     public Bebida toBebida() {

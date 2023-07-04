@@ -29,16 +29,7 @@ public class Combo {
         this.valorTotal = this.valorUnitario.multiply(BigDecimal.valueOf(quantidade));
     }
 
-    public Combo(Long id2, LancheDTO lanche2, AcompanhamentoDTO acompanhamento2, BebidaDTO bebida2,
-            SobremesaDTO sobremesa2, Integer quantidade2) {
-    }
-
-    public Combo(Long id2, LancheDTO lanche2, AcompanhamentoDTO acompanhamento2, BebidaDTO bebida2,
-            SobremesaDTO sobremesa2, Integer quantidade2, BigDecimal valorUnitario2, BigDecimal valorTotal2) {
-    }
-
-    public Combo(Long id2, Lanche dtoToDomain, Acompanhamento dtoToDomain2, Bebida dtoToDomain3, Sobremesa dtoToDomain4,
-            Integer quantidade2, BigDecimal valorUnitario2, BigDecimal valorTotal2) {
+    public Combo() {
     }
 
     private BigDecimal calcularValorUnitario() {
@@ -104,6 +95,10 @@ public class Combo {
         return valorUnitario;
     }
 
+    public void setValorUnitario(BigDecimal valorUnitario) {
+     this.valorUnitario = valorUnitario;
+    }
+
     public BigDecimal getValorTotal() {
         return valorTotal;
     }
@@ -111,4 +106,5 @@ public class Combo {
     public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
+
 }

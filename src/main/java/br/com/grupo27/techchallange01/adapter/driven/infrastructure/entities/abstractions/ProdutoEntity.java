@@ -13,13 +13,13 @@ import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "PRODUTO")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TIPO_PRODUTO")
+// @Table(name = "PRODUTO")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+// @DiscriminatorColumn(name = "TIPO_PRODUTO")
 public abstract class ProdutoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 

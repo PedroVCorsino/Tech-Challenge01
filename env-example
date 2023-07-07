@@ -1,0 +1,6 @@
+#!/bin/zsh
+export HOSTNAME="localhost"
+export PORT="8080"
+export POSTGRES_DB="postgres"
+export POSTGRES_USER="postgres"
+export POSTGRES_PASSWORD="mudar123"

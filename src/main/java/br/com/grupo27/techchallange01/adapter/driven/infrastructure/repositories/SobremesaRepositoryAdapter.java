@@ -1,27 +1,26 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.SobremesaEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.SobremesaRepositoryJPA;
-import br.com.grupo27.techchallange01.core.domain.Sobremesa;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.SobremesaJPA;
+import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.SobremesaRepositoryPort;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-@Component
+@Repository
 public class SobremesaRepositoryAdapter implements SobremesaRepositoryPort {
 
-    private final SobremesaRepositoryJPA sobremesaRepositoryJPA;
+    private final SobremesaJPA sobremesaRepositoryJPA;
 
-    public SobremesaRepositoryAdapter(SobremesaRepositoryJPA sobremesaRepositoryJPA) {
+    public SobremesaRepositoryAdapter(SobremesaJPA sobremesaRepositoryJPA) {
         this.sobremesaRepositoryJPA = sobremesaRepositoryJPA;
     }
 
     @Override
     public Sobremesa saveSobremesa(Sobremesa sobremesa) {
-        SobremesaEntity sobremesaEntity = new SobremesaEntity(sobremesa.getNome(), sobremesa.getDescricao(), sobremesa.getPreco());
+        SobremesaEntity sobremesaEntity = sobremesa.toEntity();
         sobremesaEntity = sobremesaRepositoryJPA.save(sobremesaEntity);
         return sobremesaEntity.toSobremesa();
     }

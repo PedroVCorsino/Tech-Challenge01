@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo27.techchallange01.core.application.dto.LancheDTO;
-import br.com.grupo27.techchallange01.core.domain.Lanche;
+import br.com.grupo27.techchallange01.core.domain.model.Lanche;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.LancheRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.LancheService;
 

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo27.techchallange01.core.application.dto.SobremesaDTO;
-import br.com.grupo27.techchallange01.core.domain.Sobremesa;
+import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.SobremesaRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.SobremesaService;
 

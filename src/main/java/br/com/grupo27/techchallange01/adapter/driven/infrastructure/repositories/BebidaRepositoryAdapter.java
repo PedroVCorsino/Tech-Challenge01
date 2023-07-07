@@ -1,27 +1,27 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.BebidaEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.BebidaRepositoryJPA;
-import br.com.grupo27.techchallange01.core.domain.Bebida;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.BebidaJPA;
+import br.com.grupo27.techchallange01.core.domain.model.Bebida;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.BebidaRepositoryPort;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class BebidaRepositoryAdapter implements BebidaRepositoryPort {
 
-    private final BebidaRepositoryJPA bebidaRepositoryJPA;
+    private final BebidaJPA bebidaRepositoryJPA;
 
-    public BebidaRepositoryAdapter(BebidaRepositoryJPA bebidaRepositoryJPA) {
+    public BebidaRepositoryAdapter(BebidaJPA bebidaRepositoryJPA) {
         this.bebidaRepositoryJPA = bebidaRepositoryJPA;
     }
 
     @Override
     public Bebida saveBebida(Bebida bebida) {
-        BebidaEntity bebidaEntity = new BebidaEntity(bebida.getNome(), bebida.getDescricao(), bebida.getPreco());
+        BebidaEntity bebidaEntity = bebida.toEntity();
         bebidaEntity = bebidaRepositoryJPA.save(bebidaEntity);
         return bebidaEntity.toBebida();
     }

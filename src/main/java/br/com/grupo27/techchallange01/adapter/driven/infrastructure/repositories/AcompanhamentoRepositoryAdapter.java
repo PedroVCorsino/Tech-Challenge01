@@ -1,27 +1,27 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories;
 
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.AcompanhamentoEntity;
-import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.AcompanhamentoRepositoryJPA;
-import br.com.grupo27.techchallange01.core.domain.Acompanhamento;
+import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.AcompanhamentoJPA;
+import br.com.grupo27.techchallange01.core.domain.model.Acompanhamento;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.AcompanhamentoRepositoryPort;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class AcompanhamentoRepositoryAdapter implements AcompanhamentoRepositoryPort {
 
-    private final AcompanhamentoRepositoryJPA acompanhamentoRepositoryJPA;
+    private final AcompanhamentoJPA acompanhamentoRepositoryJPA;
 
-    public AcompanhamentoRepositoryAdapter(AcompanhamentoRepositoryJPA acompanhamentoRepositoryJPA) {
+    public AcompanhamentoRepositoryAdapter(AcompanhamentoJPA acompanhamentoRepositoryJPA) {
         this.acompanhamentoRepositoryJPA = acompanhamentoRepositoryJPA;
     }
 
     @Override
     public Acompanhamento saveAcompanhamento(Acompanhamento acompanhamento) {
-        AcompanhamentoEntity acompanhamentoEntity = new AcompanhamentoEntity(acompanhamento.getNome(), acompanhamento.getDescricao(), acompanhamento.getPreco());
+        AcompanhamentoEntity acompanhamentoEntity = acompanhamento.toEntity();
         acompanhamentoEntity = acompanhamentoRepositoryJPA.save(acompanhamentoEntity);
         return acompanhamentoEntity.toAcompanhamento();
     }

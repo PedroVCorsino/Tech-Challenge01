@@ -1,7 +1,8 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
-import br.com.grupo27.techchallange01.core.domain.Cliente;
+import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,13 +15,16 @@ import jakarta.persistence.GenerationType;
 public class ClienteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Embedded
+    @Column(name = "CPF")
     private ValidadorCPF cpf;  // *CPF é um objeto de valor validando o formato do CPF
 
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "email")
     private String email; // TODO Email é um objeto de valor validando o formato do email
 
     protected ClienteEntity() {

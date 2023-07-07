@@ -1,19 +1,19 @@
-// package br.com.grupo27.techchallange01.core.domain.ports.service;
+package br.com.grupo27.techchallange01.core.domain.ports.service;
 
-// import java.util.List;
+import java.util.List;
 
-// import br.com.grupo27.techchallange01.core.application.dto.PedidoDTO;
+import br.com.grupo27.techchallange01.core.application.dto.PedidoDTO;
 
-// public interface PedidoService {
+public interface PedidoService {
 
-//     PedidoDTO getPedidoById(Long id);
+    PedidoDTO getPedidoById(Long id);
 
-//     List<PedidoDTO> getAllPedidos();
+    List<PedidoDTO> getAllPedidos();
 
-//     PedidoDTO createPedido(PedidoDTO pedidoDTO);
+    PedidoDTO createPedido(PedidoDTO pedidoDTO);
 
-//     PedidoDTO updatePedido(Long id, PedidoDTO pedidoDTO);
+    PedidoDTO updatePedido(Long id, PedidoDTO pedidoDTO);
 
-//     boolean deletePedido(Long id);
+    boolean deletePedido(Long id);
     
-// }
+}

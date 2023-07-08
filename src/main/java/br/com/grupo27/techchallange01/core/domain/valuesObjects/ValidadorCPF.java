@@ -34,6 +34,11 @@ public class ValidadorCPF {
     return Objects.hash(valor);
   }
 
+  @Override
+    public String toString() {
+        return valor;
+    }
+
   public static boolean validarDigitosVerificadores(String valor) {
     // Verifica se o CPF não tem uma sequência de números iguais
     if (valor.equals("00000000000")

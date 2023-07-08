@@ -2,6 +2,7 @@ package br.com.grupo27.techchallange01.adapter.driver.api.controllers;
 
 import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
 import br.com.grupo27.techchallange01.core.domain.ports.service.ClienteService;
+import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,4 +73,23 @@ public class ClienteController {
         List<ClienteDTO> clientes = clienteService.getAllClientes();
         return ResponseEntity.ok(clientes);
     }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<ClienteDTO> getClienteByCpf(@PathVariable String cpf) {
+        try {
+            ClienteDTO cliente = clienteService.getClienteByCPF(cpf);
+            if (cliente != null) {
+                return ResponseEntity.ok(cliente);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+
 }

@@ -9,6 +9,7 @@ import br.com.grupo27.techchallange01.core.application.dto.ClienteDTO;
 import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.ClienteService;
+import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -50,4 +51,17 @@ public class ClienteServiceImpl implements ClienteService {
                 .map(Cliente::toDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ClienteDTO getClienteByCPF(String cpfString) throws IllegalArgumentException {
+        try {
+            ValidadorCPF cpf = new ValidadorCPF(cpfString);
+            Cliente cliente = clienteRepository.findByCpf(cpf);
+            return cliente != null ? cliente.toDTO() : null;
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
+
+
 }

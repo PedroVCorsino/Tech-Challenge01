@@ -11,7 +11,6 @@ import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteReposi
 import br.com.grupo27.techchallange01.core.domain.ports.service.ClienteService;
 import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
-@Service
 public class ClienteServiceImpl implements ClienteService {
 
     private final ClienteRepositoryPort clienteRepository;

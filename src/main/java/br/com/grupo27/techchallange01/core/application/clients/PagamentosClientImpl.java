@@ -6,7 +6,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import br.com.grupo27.techchallange01.core.domain.ports.client.PagamentosClient;
 import reactor.core.publisher.Mono;
 
-@Component
 public class PagamentosClientImpl implements PagamentosClient {
 
     private final WebClient webClient;

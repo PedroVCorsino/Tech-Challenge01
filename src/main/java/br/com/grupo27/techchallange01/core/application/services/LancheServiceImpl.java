@@ -10,7 +10,6 @@ import br.com.grupo27.techchallange01.core.domain.model.Lanche;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.LancheRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.LancheService;
 
-@Service
 public class LancheServiceImpl implements LancheService {
 
     private final LancheRepositoryPort lancheRepository;

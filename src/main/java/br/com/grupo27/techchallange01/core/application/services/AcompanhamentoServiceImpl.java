@@ -10,7 +10,7 @@ import br.com.grupo27.techchallange01.core.domain.model.Acompanhamento;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.AcompanhamentoRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.AcompanhamentoService;
 
-@Service
+
 public class AcompanhamentoServiceImpl implements AcompanhamentoService {
 
     private final AcompanhamentoRepositoryPort acompanhamentoRepository;

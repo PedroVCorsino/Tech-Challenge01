@@ -1,18 +1,20 @@
-FROM adoptopenjdk:17-jdk-hotspot as builder
+# Usa a imagem do Java 17 como base
+FROM azul/zulu-openjdk:17 as builder
 
+# Cria o diretório app dentro do contêiner
 WORKDIR /app
 
-COPY ./target/tech-challenge-0.0.1-SNAPSHOT.war /app/tech-challenge.jar
+# Copia o arquivo .war para o contêiner
+COPY ./target/techchallange01-0.0.1-SNAPSHOT.war /app/tech-challenge.war
 
-RUN java -techchallange01-0.0.1-SNAPSHOT.war
+# Multi-stage build: segunda etapa
+FROM azul/zulu-openjdk:17
 
-FROM adoptopenjdk:17-jdk-hotspot
-
+# Cria o diretório app dentro do contêiner
 WORKDIR /app
 
-COPY --from=builder /app/dependencies/ ./
-COPY --from=builder /app/spring-boot-loader/ ./
-COPY --from=builder /app/snapshot-dependencies/ ./
-COPY --from=builder /app/application/ ./
+# Copia o arquivo .war da primeira etapa para a segunda etapa
+COPY --from=builder /app/tech-challenge.war /app/tech-challenge.war
 
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+# Define o ponto de entrada para a aplicação Spring Boot
+ENTRYPOINT ["java", "-jar", "/app/tech-challenge.war"]

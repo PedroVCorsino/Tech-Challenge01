@@ -39,7 +39,7 @@ $ . ./env && mvn clean package install && docker-compose up -d --build
 - [x] Pedidos com status
 
 ## Autores
-- Diego Amorim
-- Gabriela Ribeiro
-- Luzivan Gois
-- Pedro Vinicius
+- [Diego Amorim]()
+- [Gabriela Ribeiro](https://github.com/gabsribeiro)
+- [Luzivan Gois](https://github.com/luzivanmgois)
+- [Pedro Vinicius](https://github.com/PedroVCorsino)

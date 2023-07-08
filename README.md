@@ -7,10 +7,10 @@ Desafio desenvolvido para o curso de Architecture Software da FIAP Pós Tech.
 
 ## Índice
 
-- <a href="#tecnologias"> Tecnologias utilizadas
-- <a href="#rodar-projeto"> Como rodar este projeto
-- <a href="#funcionalidades"> Funcionalidades do projeto
-- <a href="#pessoas"> Pessoas autoras
+- [Tecnologias utilizadas](#-tecnologias-utilizadas)
+- [Como rodar este projeto](#-como-rodar-este-projeto)
+- [Funcionalidades do projeto](#-funcionalidades-do-projeto)
+- [Pessoas autoras](#-pessoas-autoras)
 
 ## Tecnologias utilizadas
 <div style="display: inline_block"><br>

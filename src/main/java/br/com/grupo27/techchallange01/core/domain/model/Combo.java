@@ -2,11 +2,6 @@ package br.com.grupo27.techchallange01.core.domain.model;
 
 import java.math.BigDecimal;
 
-import br.com.grupo27.techchallange01.core.application.dto.AcompanhamentoDTO;
-import br.com.grupo27.techchallange01.core.application.dto.BebidaDTO;
-import br.com.grupo27.techchallange01.core.application.dto.LancheDTO;
-import br.com.grupo27.techchallange01.core.application.dto.SobremesaDTO;
-
 public class Combo {
     private Long id;
     private Lanche lanche;

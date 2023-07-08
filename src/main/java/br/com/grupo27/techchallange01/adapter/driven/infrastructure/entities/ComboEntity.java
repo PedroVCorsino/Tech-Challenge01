@@ -1,11 +1,6 @@
 package br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities;
 
 import java.math.BigDecimal;
-
-import br.com.grupo27.techchallange01.core.domain.model.Acompanhamento;
-import br.com.grupo27.techchallange01.core.domain.model.Bebida;
-import br.com.grupo27.techchallange01.core.domain.model.Lanche;
-import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -122,15 +117,15 @@ public class ComboEntity {
         this.valorTotal = valorTotal;
     }
 
-    // @PrePersist
-    // @PreUpdate
-    // private void calcularValorUnitarioETotal() {
-    //     BigDecimal valorLanche = (lanche != null) ? lanche.getPreco() : BigDecimal.ZERO;
-    //     BigDecimal valorAcompanhamento = (acompanhamento != null) ? acompanhamento.getPreco() : BigDecimal.ZERO;
-    //     BigDecimal valorBebida = (bebida != null) ? bebida.getPreco() : BigDecimal.ZERO;
-    //     BigDecimal valorSobremesa = (sobremesa != null) ? sobremesa.getPreco() : BigDecimal.ZERO;
+    @PrePersist
+    @PreUpdate
+    private void calcularValorUnitarioETotal() {
+        BigDecimal valorLanche = (lanche != null) ? lanche.getPreco() : BigDecimal.ZERO;
+        BigDecimal valorAcompanhamento = (acompanhamento != null) ? acompanhamento.getPreco() : BigDecimal.ZERO;
+        BigDecimal valorBebida = (bebida != null) ? bebida.getPreco() : BigDecimal.ZERO;
+        BigDecimal valorSobremesa = (sobremesa != null) ? sobremesa.getPreco() : BigDecimal.ZERO;
 
-    //     valorUnitario = valorLanche.add(valorAcompanhamento).add(valorBebida).add(valorSobremesa);
-    //     valorTotal = valorUnitario.multiply(BigDecimal.valueOf(quantidade));
-    // }
+        valorUnitario = valorLanche.add(valorAcompanhamento).add(valorBebida).add(valorSobremesa);
+        valorTotal = valorUnitario.multiply(BigDecimal.valueOf(quantidade));
+    }
 }

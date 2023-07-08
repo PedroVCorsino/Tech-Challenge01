@@ -1,4 +1,4 @@
-FROM adoptopenjdk:17-jdk-hotspot as builder
+FROM azul/zulu-openjdk:17 as builder
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY ./target/tech-challenge-0.0.1-SNAPSHOT.war /app/tech-challenge.jar
 
 RUN java -techchallange01-0.0.1-SNAPSHOT.war
 
-FROM adoptopenjdk:17-jdk-hotspot
+FROM azul/zulu-openjdk:17
 
 WORKDIR /app
 

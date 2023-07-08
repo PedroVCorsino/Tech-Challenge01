@@ -1,6 +1,8 @@
 package br.com.grupo27.techchallange01.adapter.driver.api.controllers;
 
 import br.com.grupo27.techchallange01.core.application.dto.PedidoDTO;
+import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
+import br.com.grupo27.techchallange01.core.domain.model.Pedido;
 import br.com.grupo27.techchallange01.core.domain.ports.service.PedidoService;
 
 import org.springframework.http.HttpStatus;
@@ -71,5 +73,50 @@ public class PedidoController {
     public ResponseEntity<List<PedidoDTO>> getAllPedidos() {
         List<PedidoDTO> pedidos = pedidoService.getAllPedidos();
         return ResponseEntity.ok(pedidos);
+    }
+
+    @PostMapping("/verifica-pagamento/{id}")
+    public ResponseEntity<Boolean> verificaPagamento(@PathVariable Long id) {
+        try {
+            PedidoDTO pedidoAtualizado = pedidoService.verificaStatusPagamento(id);
+            if (pedidoAtualizado != null) {
+                return ResponseEntity.ok(true);
+            } else {
+                return ResponseEntity.ok(false);
+            }
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
+    }
+
+
+    @GetMapping("/status-pagamento")
+    public ResponseEntity<List<PedidoDTO>> getPedidosByStatusPagamento(@RequestParam boolean pago) {
+        try {
+            List<PedidoDTO> pedidos = pedidoService.findPedidosByStatusPagamento(pago);
+            if (pedidos != null && !pedidos.isEmpty()) {
+                return ResponseEntity.ok(pedidos);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+   @GetMapping("/status/{status}")
+    public ResponseEntity<List<Pedido>> getPedidosByStatus(@PathVariable StatusPedido status) {
+        try {
+            List<Pedido> pedidos = pedidoService.findPedidosByStatus(status);
+            if (!pedidos.isEmpty()) {
+                return ResponseEntity.ok(pedidos);
+            } else {
+                return ResponseEntity.noContent().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

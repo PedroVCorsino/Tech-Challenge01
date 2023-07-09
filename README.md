@@ -1,6 +1,6 @@
 # Tech-Challenge
 
-Desafio desenvolvido para a fase 1 do curso de Architecture Software da FIAP Pós Tech.
+Desafio desenvolvido para a fase 1 do curso de Software Architecture da FIAP Pós Tech.
 
 ## Versão
 1.0.0

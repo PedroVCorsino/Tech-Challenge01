@@ -24,11 +24,12 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - tech-challenge
 
-volumes:  
+volumes:
   postgres_data:
 
-networks:  
+networks:
   tech-challenge:

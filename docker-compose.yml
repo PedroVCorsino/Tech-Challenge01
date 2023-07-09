@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - tech-challenge
+
   tech-challenge:
     build:
       context: .
@@ -16,18 +31,6 @@ services:
     networks:
       - tech-challenge
 
-  db:
-    image: postgres:13-alpine
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-      # Caso o flyway de erro é só descomentar a linha abaixo
-      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - tech-challenge
 
 volumes:
   postgres_data:

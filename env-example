@@ -1,0 +1,5 @@
+# Copie ou renomeie esse arquivo como .env
+POSTGRES_DB="postgres"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="mudar123"
+

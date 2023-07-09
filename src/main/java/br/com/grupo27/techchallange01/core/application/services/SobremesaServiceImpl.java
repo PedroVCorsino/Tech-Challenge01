@@ -10,7 +10,6 @@ import br.com.grupo27.techchallange01.core.domain.model.Sobremesa;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.SobremesaRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.SobremesaService;
 
-@Service
 public class SobremesaServiceImpl implements SobremesaService {
 
     private final SobremesaRepositoryPort sobremesaRepository;

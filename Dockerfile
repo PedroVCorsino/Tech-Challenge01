@@ -1,18 +1,13 @@
-FROM adoptopenjdk:17-jdk-hotspot as builder
+FROM azul/zulu-openjdk-alpine:17 as builder
 
 WORKDIR /app
 
-COPY ./target/tech-challenge-0.0.1-SNAPSHOT.war /app/tech-challenge.jar
+COPY ./target/techchallange01-0.0.1-SNAPSHOT.war /app/tech-challenge.war
 
-RUN java -techchallange01-0.0.1-SNAPSHOT.war
-
-FROM adoptopenjdk:17-jdk-hotspot
+FROM azul/zulu-openjdk-alpine:17
 
 WORKDIR /app
 
-COPY --from=builder /app/dependencies/ ./
-COPY --from=builder /app/spring-boot-loader/ ./
-COPY --from=builder /app/snapshot-dependencies/ ./
-COPY --from=builder /app/application/ ./
+COPY --from=builder /app/tech-challenge.war /app/tech-challenge.war
 
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+ENTRYPOINT ["java", "-jar", "/app/tech-challenge.war"]

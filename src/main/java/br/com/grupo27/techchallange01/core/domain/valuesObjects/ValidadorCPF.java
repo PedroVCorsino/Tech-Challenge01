@@ -11,11 +11,12 @@ public class ValidadorCPF {
   }
 
   public ValidadorCPF(String valor) {
-    if (valor == null || !valor.matches("\\d{11}") || !validarDigitosVerificadores(valor)) {
-      throw new IllegalArgumentException("CPF inválido");
-    }
-    this.valor = valor;
+      if (valor == null || (!valor.isEmpty() && (!valor.matches("\\d{11}") || !validarDigitosVerificadores(valor)))) {
+          throw new IllegalArgumentException("CPF inválido");
+      }
+      this.valor = valor;
   }
+
 
   public String getValor() {
     return valor;
@@ -33,6 +34,11 @@ public class ValidadorCPF {
   public int hashCode() {
     return Objects.hash(valor);
   }
+
+  @Override
+    public String toString() {
+        return valor;
+    }
 
   public static boolean validarDigitosVerificadores(String valor) {
     // Verifica se o CPF não tem uma sequência de números iguais

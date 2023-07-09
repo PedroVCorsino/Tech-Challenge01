@@ -10,7 +10,6 @@ import br.com.grupo27.techchallange01.core.domain.model.Bebida;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.BebidaRepositoryPort;
 import br.com.grupo27.techchallange01.core.domain.ports.service.BebidaService;
 
-@Service
 public class BebidaServiceImpl implements BebidaService {
 
     private final BebidaRepositoryPort bebidaRepository;

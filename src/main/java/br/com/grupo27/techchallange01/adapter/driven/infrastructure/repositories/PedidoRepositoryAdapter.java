@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.PedidoEntity;
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.PedidoJPA;
 import br.com.grupo27.techchallange01.config.mappers.PedidoMapper;
+import br.com.grupo27.techchallange01.core.domain.enums.StatusPedido;
 import br.com.grupo27.techchallange01.core.domain.model.Pedido;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.PedidoRepositoryPort;
 
@@ -55,5 +56,21 @@ public class PedidoRepositoryAdapter implements PedidoRepositoryPort {
     public boolean deletePedido(Long id) {
         pedidoJPA.deleteById(id);
         return true;
-    }  
+    }
+
+    @Override
+    public List<Pedido> findPedidosByStatusPagamento(boolean pago) {
+        List<PedidoEntity> pedidoEntities = pedidoJPA.findByPago(pago);
+        return pedidoEntities.stream()
+            .map(pedidoMapper::entityToDomain)
+            .collect(Collectors.toList());
+    } 
+
+    @Override
+    public List<Pedido> findPedidosByStatus(StatusPedido status) {
+        List<PedidoEntity> pedidoEntities = pedidoJPA.findByStatus(status);
+        return pedidoEntities.stream()
+            .map(pedidoMapper::entityToDomain)
+            .collect(Collectors.toList());
+    }
 }

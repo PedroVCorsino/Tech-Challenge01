@@ -1,15 +1,19 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: mudar123
+    url: jdbc:postgresql://db:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     hibernate:
       ddl-auto: none
   flyway:
+    enabled: true
     baseline-on-migrate: true
+    validateOnMigrate: false
+    
+
 
 # logging:
 #   level:

@@ -5,6 +5,7 @@ import br.com.grupo27.techchallange01.adapter.driven.infrastructure.entities.Cli
 import br.com.grupo27.techchallange01.adapter.driven.infrastructure.repositories.JPA.ClienteJPA;
 import br.com.grupo27.techchallange01.core.domain.model.Cliente;
 import br.com.grupo27.techchallange01.core.domain.ports.repository.ClienteRepositoryPort;
+import br.com.grupo27.techchallange01.core.domain.valuesObjects.ValidadorCPF;
 
 import org.springframework.stereotype.Repository;
 
@@ -65,4 +66,10 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
                 .map(ClienteEntity::toCliente)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Cliente findByCpf(ValidadorCPF cpf) {
+        return ClienteJPA.findByCpf(cpf).map(ClienteEntity::toCliente).orElse(null);
+    }
+
 }

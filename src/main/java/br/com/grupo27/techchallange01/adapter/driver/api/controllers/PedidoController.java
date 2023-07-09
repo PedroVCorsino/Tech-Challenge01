@@ -75,7 +75,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedidos);
     }
 
-    @PostMapping("/verifica-pagamento/{id}")
+    @GetMapping("/verifica-pagamento/{id}")
     public ResponseEntity<Boolean> verificaPagamento(@PathVariable Long id) {
         try {
             PedidoDTO pedidoAtualizado = pedidoService.verificaStatusPagamento(id);

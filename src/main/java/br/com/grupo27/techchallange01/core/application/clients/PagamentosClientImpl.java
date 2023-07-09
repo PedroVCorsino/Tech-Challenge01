@@ -1,6 +1,4 @@
 package br.com.grupo27.techchallange01.core.application.clients;
-
-import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.grupo27.techchallange01.core.domain.ports.client.PagamentosClient;

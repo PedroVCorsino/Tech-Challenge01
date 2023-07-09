@@ -165,6 +165,24 @@ $ ./build-and-deploy
             "status": "PENDENTE",
             "pago": false
       }
+#### Para verificar o pagamento dos pedidos
+- Recomendo começar verificando quais pedidos estao com status-pagamento = false
+    - http://localhost:8080/swagger-ui/index.html#/pedido-controller/getPedidosByStatusPagamento
+    - ou `GET` para `/api/pedido/status-pagamento?pago=false`
+- Selecionar o id de algum pedido e enviar para
+    - http://localhost:8080/swagger-ui/index.html#/pedido-controller/verificaPagamento
+    - ou `GET` para `/api/pedido/verifica-pagamento/{id}`
+- Aqui a aplicação ira verificar se o pedido realmente consta como não pago no banco, e se for o caso ira fazer uma consulta para uma api de paramentos externa. O retorno sera true caso o pedido esteja pago, e o mesmo tera seu status-pagamento atualizado.
+
+- Listar pedidos
+    - http://localhost:8080/swagger-ui/index.html#/pedido-controller/getAllPedidos
+    - ou `GET` para `/api/pedido/all`
+
+- Se preferir pode listar pelo status de andamento do pedido
+    -  http://localhost:8080/swagger-ui/index.html#/pedido-controller/getPedidosByStatus
+    -  ou `GET` para `/api/pedido/status/{status}`
+  
+  
 
 ## Autores
 - [Diego Amorim]()

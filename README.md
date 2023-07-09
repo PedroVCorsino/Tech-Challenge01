@@ -9,7 +9,7 @@ Desafio desenvolvido para a fase 1 do curso de Architecture Software da FIAP Pó
 <a href="#tecnologias">Tecnologias</a> •
 <a href="#requisitos-minimos">Requisitos minimos</a> •
 <a href="#como-rodar">Como rodar</a> •
-<a href="#funcionalidades">Funcionalidades</a> •
+<a href="criterios-de-aceite">Criterios de aceite</a> •
 <a href="#autores">Autores</a>
 
 ## Tecnologias
@@ -50,18 +50,17 @@ $ ./build-and-deploy
     - Gestão de estoque,
     - funcionários, clientes,
     - estratégias de marketing
----
 
-#### Contextos delimitados
+
+### Contextos delimitados
 
 - Pedido (Realização do pedido e pagamento) 
   ![image](https://github.com/PedroVCorsino/Tech-Challenge/assets/61948860/0c627219-8fb8-4bdc-b88a-3d0db6087973)
 
 - Cozinha (Preparação e entrega do pedido)
   ![image](https://github.com/PedroVCorsino/Tech-Challenge/assets/61948860/823b0576-5524-4397-9411-6805505dfb85)
----
 
-#### Dicionário de linguagem ubíqua
+### Dicionário de linguagem ubíqua
 - Identificação: Pode se identificar usando CPF, nome, e-mail ou não se identificar.
 - Produto: Quaisquer itens vendidos pela lanchonete, divididos nas categorias Lanche, Acompanhamento, Bebida e Sobremesa.
 - Combo: É uma oferta especial que combina um lanche, um acompanhamento, uma bebida e uma sobremesa por um preço promocional.
@@ -71,8 +70,101 @@ $ ./build-and-deploy
 - Sobremesa: Refere-se a um item do cardápio que é servido após a refeição principal. Pode incluir opções como sorvetes, tortas, bolos, milkshakes especiais ou outras delícias doces.
 - Categoria: Ou tipo, se refere a qual tipo de produto entre as opções lanche, acompanhamento, bebida e sobremesa.
 ---
- 
 
+ ### Api 
+ - Abaixo vou listar apenas o que foi pedido na entrega fase 1 do tech-challenge.
+ - Após subir a aplicação recomendo usar o Swagger para testar os endpoints
+     - http://localhost:8080/swagger-ui/index.html
+       
+### Cliente `/api/cliente`
+- Cadastro de cliente
+    - http://localhost:8080/swagger-ui/index.html#/cliente-controller/createCliente
+    - Ou um `POST` para `/api/cliente` com o json:
+  ```
+    {
+      "cpf": "86342853088",
+      "nome": "José",
+      "email": "joao@example.com"
+    }
+
+- Identificação do Cliente via CPF
+    - http://localhost:8080/swagger-ui/index.html#/cliente-controller/getClienteByCpf
+    - Ou `GET` para `/api/cliente/cpf/{cpf}`
+
+### Produto `/api/produtos/`
+- Cada categoria de produto possui seu proprio endpoint
+
+- ex: com lanche
+    - http://localhost:8080/swagger-ui/index.html#/lanche-controller/createLanche
+    - ou `POST` para `/api/produtos/lanche` com o json:
+      ```
+      {
+        "nome": "Hambúrguer de siri",
+        "descricao": "Receita secreta",
+        "preco": 10.99
+      }
+- Para editar o produto, digamos que queremos aumentar o preço.
+    - http://localhost:8080/swagger-ui/index.html#/lanche-controller/updateLanche
+    - ou `PUT` `api/produtos/lanche/{id}' com json:
+    ```
+      {
+        "nome": "Hambúrguer de siri",
+        "descricao": "Receita secreta",
+        "preco": 15.99
+      }
+- Para remover
+    -  http://localhost:8080/swagger-ui/index.html#/lanche-controller/deleteLanche
+    -  ou `delete` para `/api/produtos/lanche/id`
+  - Lembrando que não é possivel deletar produtos que ja estão vinculados a algum pedido.
+
+  - Buscar por categoria
+      - http://localhost:8080/swagger-ui/index.html#/produtos-controller/getProdutosByTipo
+      - Ou `GET` para `/api/produtos/tipo/{tipo}`
+   
+### Pedido `/api/pedido`
+- Para cadastrar um novo pedido
+    - http://localhost:8080/swagger-ui/index.html#/pedido-controller/createPedido
+    - Ou um `POST` para `/api/pedido` com o seguinte json:
+      ```
+        {
+            "id": 0,
+            "idCliente": 1,
+            "combos": [
+                {
+                    "id": 0,
+                    "lanche": {
+                        "id": 1,
+                        "nome": "Hambúrguer",
+                        "descricao": "Delicioso hambúrguer artesanal",
+                        "preco": 10.99
+                    },
+                    "acompanhamento": {
+                        "id": 1,
+                        "nome": "Batata Frita",
+                        "descricao": "Porção de batatas fritas crocantes",
+                        "preco": 5.99
+                    },
+                    "bebida": {
+                        "id": 1,
+                        "nome": "Refrigerante",
+                        "descricao": "Bebida gaseificada sabor cola",
+                        "preco": 4.99
+                    },
+                    "sobremesa": {
+                        "id": 5,
+                        "nome": "Torta de Limão",
+                        "descricao": "Torta doce com recheio de limão",
+                        "preco": 6.99
+                    },
+                    "quantidade": 1,
+                    "valorUnitario": 28.96,
+                    "valorTotal": 28.96
+                }
+            ],
+            "valorTotal": 28.96,
+            "status": "PENDENTE",
+            "pago": false
+      }
 
 ## Autores
 - [Diego Amorim]()

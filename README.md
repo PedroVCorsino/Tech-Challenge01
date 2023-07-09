@@ -72,7 +72,6 @@ $ ./build-and-deploy
 ---
 
  ### Api 
- - Abaixo vou listar apenas o que foi pedido na entrega fase 1 do tech-challenge.
  - Após subir a aplicação recomendo usar o Swagger para testar os endpoints
      - http://localhost:8080/swagger-ui/index.html
        

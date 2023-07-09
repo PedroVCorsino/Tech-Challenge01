@@ -1,3 +1,0 @@
-CREATE DATABASE techchalange;
-CREATE USER fiap WITH PASSWORD 'techchalange123';
-GRANT ALL PRIVILEGES ON DATABASE techchalange TO fiap;

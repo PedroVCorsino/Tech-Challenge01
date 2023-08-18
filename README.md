@@ -184,7 +184,7 @@ $ ./build-and-deploy
   
 
 ## Autores
-- [Diego Amorim]()
+- [Diego Amorim](https://github.com/dieg0amorim)
 - [Gabriela Ribeiro](https://github.com/gabsribeiro)
 - [Luzivan Gois](https://github.com/luzivanmgois)
 - [Pedro Vinicius](https://github.com/PedroVCorsino)

@@ -1,6 +1,6 @@
 # Tech-Challenge
 
-Desafio desenvolvido com DDD e Arquitetura Hexagonal para a fase01 do curso de Software Architecture da FIAP Pós Tech.
+Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para a fase01 do curso de Software Architecture da FIAP Pós Tech.
 
 ## Versão
 1.0.0
